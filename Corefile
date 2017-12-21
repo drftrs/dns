@@ -1,0 +1,8 @@
+. {
+    drftrs http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml
+    forward . tls://9.9.9.9 {
+        tls_name dns.quad9.net
+        health_check 5s
+    }
+    cache 30
+}
