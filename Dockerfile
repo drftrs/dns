@@ -5,7 +5,9 @@ MAINTAINER jerluc <jerluc@drft.rs> @jerluc
 RUN apk --update add bind-tools ca-certificates openssl && update-ca-certificates && rm -rf /var/cache/apk/*
 
 ADD dns /dns
+
 ADD Corefile /Corefile
 
 EXPOSE 53 53/udp
-ENTRYPOINT ["/dns", "-conf", "/Corefile"]
+
+CMD ["/dns", "-conf", "/Corefile"]

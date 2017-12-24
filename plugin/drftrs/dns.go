@@ -19,7 +19,7 @@ type DNS struct {
 // ServeDNS implements the plugin.Handler interface.
 func (d *DNS) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.Msg) (int, error) {
 	state := request.Request{W: w, Req: r}
-	if state.QType() == dns.TypeA && d.IsBlocked(r) {
+	if (state.QType() == dns.TypeA || state.QType() == dns.TypeAAAA) && d.IsBlocked(r) {
 		return dns.RcodeRefused, nil
 	}
 	return plugin.NextOrFailure(d.Name(), d.Next, ctx, w, r)

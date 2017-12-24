@@ -8,6 +8,7 @@ import (
 var directives = []string{
 	"drftrs",
 	"cache",
+	"log",
 	"forward",
 	"startup",
 	"shutdown",
