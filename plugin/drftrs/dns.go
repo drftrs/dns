@@ -1,7 +1,6 @@
 package drftrs
 
 import (
-	"log"
 	"strings"
 
 	"github.com/coredns/coredns/plugin"
@@ -33,7 +32,6 @@ func (d *DNS) IsBlocked(r *dns.Msg) bool {
 		domain := strings.TrimSpace(q.Name[:len(q.Name)-1])
 		for _, blacklisted := range d.Blacklist {
 			if strings.HasSuffix(domain, blacklisted) {
-				log.Printf("Matched black list: %s\n", domain)
 				return true
 			}
 		}
